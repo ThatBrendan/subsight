@@ -16,13 +16,13 @@ app.get("/api/metrics/:metric", (req: Request, res: Response) => {
     mrr: { value: "$25,000", monthlyGrowth: "5%" },
     arr: { value: "$300,000", annualGrowth: "12%" },
     churn: { rate: "2.5%", monthlyChurnedCustomers: 5 },
+    active: { count: 1200, percentageChange: "8%" },
     ltv: { value: "$1,250", averageLifespan: "10 months" },
     cac: { value: "$220", lastMonth: "$210" },
-    activeUsers: { count: 1200, percentageChange: "8%" },
-    grossMargin: { percentage: "75%", revenueAfterCosts: "$18,750" },
+    gross: { percentage: "75%", revenueAfterCosts: "$18,750" },
   };
 
-  res.json(sampleData[metric.toLowerCase()] ?? { error: "Metric not found" });
+  res.json(sampleData[metric] ?? { error: "Metric not found" });
 });
 
 app.listen(5000, () => {

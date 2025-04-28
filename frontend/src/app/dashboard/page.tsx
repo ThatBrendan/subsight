@@ -1,19 +1,20 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { MetricDefinitionList } from "../components/MetricDefinitionList";
 
 const metrics = [
   { name: "MRR", href: "mrr" },
   { name: "ARR", href: "arr" },
   { name: "Churn Rate", href: "churn" },
+  { name: "Active Users", href: "active" },
   { name: "LTV", href: "ltv" },
   { name: "CAC", href: "cac" },
-  { name: "Active Users", href: "active-users" },
-  { name: "Gross Margin", href: "gross-margin" },
+  { name: "Gross Margin", href: "gross" },
 ];
 
 export default function DashboardHome() {
-  const [selectedMetric, setSelectedMetric] = useState<string | null>(null);
+  const [selectedMetric, setSelectedMetric] = useState<string>(metrics[0].href);
 
   interface MetricData {
     [key: string]: string | number | boolean | null | object;
@@ -47,11 +48,11 @@ export default function DashboardHome() {
         <ul className="sidebar-list">
           {metrics.map((metric) => (
             <button
-            className="rounded-full"
-            key={metric.name}
-            onClick={() => {
-              setSelectedMetric(metric.href);
-            }}
+              className="rounded-full"
+              key={metric.name}
+              onClick={() => {
+                setSelectedMetric(metric.href);
+              }}
             >
               {metric.name}
             </button>
@@ -63,15 +64,26 @@ export default function DashboardHome() {
       <div className="col-9 dashboard-content">
         {selectedMetric ? (
           <div>
-            <h2 className="white-text">{selectedMetric} Overview</h2>
-            {data ? (
-              // Format the data nicely
-              <pre className="white-text">{JSON.stringify(data, null, 2)}</pre>
-            ) : (
-              <p>Loading data...</p>
-            )}
+            <h2 className="white-text text-uppercase">
+              {selectedMetric} Values
+            </h2>
+            <div className="row no-gutter">
+              <div className="dashboard-card col-lg-4">
+                {data ? (
+                  <MetricDefinitionList data={data} />
+                ) : (
+                  <p>Loading data...</p>
+                )}
+                
+              </div>
+            </div>
+
+            
+
             {/* Optionally, add a button to clear the selected metric */}
-            <button onClick={() => setSelectedMetric(null)}>Back</button>
+            <button onClick={() => setSelectedMetric(metrics[0].href)}>
+              Back
+            </button>
           </div>
         ) : (
           <p>Please select a metric to view its details.</p>

@@ -6,7 +6,9 @@ const Navbar = () => {
   return (
     <div className="row no-gutter">
       <div className="col-3">
-        <Image src={Logo} alt="company-logo" className="company-logo" />
+        <Link href="/">
+          <Image src={Logo} alt="company-logo" className="company-logo" />
+        </Link>
       </div>
       <div className="col-9 navbar-links">
         <Link href="/dashboard">
