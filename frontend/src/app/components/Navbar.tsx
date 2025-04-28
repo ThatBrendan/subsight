@@ -9,7 +9,7 @@ const Navbar = () => {
         <Image src={Logo} alt="company-logo" className="company-logo" />
       </div>
       <div className="col-9 navbar-links">
-        <Link href="/">
+        <Link href="/dashboard">
           <p className="white-text">Dashboard</p>
         </Link>
         <Link href="/login">

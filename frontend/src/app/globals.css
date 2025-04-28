@@ -92,3 +92,14 @@ a {
   margin-top: 20px;
   text-align: end;
 }
+.sidebar-list {
+  display: flex;
+  flex-direction: column;
+}
+.sidebar-list button {
+  background: none;
+  color: white;
+  border: none;
+  padding: 2rem;
+  cursor: pointer;
+}
