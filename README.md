@@ -1,5 +1,5 @@
 # Subsight-app
-=======
+
 
 ## Overview
 A simple front-end SaaS platform application, built using React, Express.js, Tailwind CSS, and Next.js. This web app aims to help businesses track and optimize their recurring revenue streams.
